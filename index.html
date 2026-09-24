@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student portfolio website for Shivam Mishra">
+  <title>Shivam Mishra | Student Portfolio</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #2477a8;
+      --light-blue: #eaf5fb;
+      --cream: #fffaf3;
+      --white: #ffffff;
+      --text: #273746;
+      --muted: #617385;
+      --border: #d9e5ec;
+      --shadow: 0 10px 25px rgba(23, 50, 77, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(90%, 1100px);
+      margin: 0 auto;
+    }
+
+    /* Navigation bar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 68px;
+    }
+
+    .logo {
+      color: var(--navy);
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--blue);
+    }
+
+    /* Shared section styles */
+    section {
+      padding: 76px 0;
+      scroll-margin-top: 68px;
+    }
+
+    .section-heading {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: 2rem;
+    }
+
+    .section-intro {
+      max-width: 650px;
+      margin: 0 0 30px;
+      color: var(--muted);
+    }
+
+    /* Home section */
+    .hero {
+      background: var(--light-blue);
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+      gap: 45px;
+      min-height: 430px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 650px;
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 1.08;
+    }
+
+    .hero-text {
+      max-width: 590px;
+      margin: 0 0 25px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 11px 20px;
+      border-radius: 6px;
+      background: var(--blue);
+      color: var(--white);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .button:hover,
+    .button:focus {
+      background: var(--navy);
+    }
+
+    .hero-card {
+      padding: 35px 25px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .initials {
+      display: grid;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 18px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* About and skills sections */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .about-content p {
+      margin-top: 0;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills-list li {
+      padding: 9px 15px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--light-blue);
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    /* Projects section */
+    .projects {
+      background: var(--light-blue);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .project-card h3 {
+      margin: 0 0 8px;
+      color: var(--navy);
+    }
+
+    .project-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Contact section and footer */
+    .contact-box {
+      padding: 28px;
+      border-left: 4px solid var(--blue);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-box p {
+      margin: 8px 0;
+    }
+
+    .contact-box a {
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 22px 0;
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    /* Make the layout comfortable on phones and tablets */
+    @media (max-width: 760px) {
+      .nav-content {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 15px 0;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 8px 16px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .hero-content,
+      .about-content,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        gap: 30px;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Simple navigation links to each main portfolio section -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-content">
+      <a class="logo" href="#home">Shivam Mishra</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Home section: introduce the student and provide a clear starting point -->
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <div>
+          <p class="eyebrow">Student Portfolio</p>
+          <h1>Hello, I am Shivam Mishra.</h1>
+          <p class="hero-text">I am a curious engineering student who enjoys learning how technology can solve everyday problems.</p>
+          <a class="button" href="#projects">View my projects</a>
+        </div>
+        <div class="hero-card" aria-label="Student summary">
+          <div class="initials" aria-hidden="true">SM</div>
+          <p>Learning, building, and growing one project at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About and skills section: explain the student's background and abilities -->
+    <section id="about">
+      <div class="container about-content">
+        <div>
+          <h2 class="section-heading">About Me</h2>
+          <p>I am a B.Tech ECE (Embedded Systems) student at VIT-AP. I am interested in electronics, programming, and creating useful digital experiences.</p>
+          <p>My goal is to keep improving my technical skills while working on practical projects that combine hardware and software.</p>
+        </div>
+        <div id="skills">
+          <h2 class="section-heading">Skills</h2>
+          <ul class="skills-list">
+            <li>Arduino</li>
+            <li>Python</li>
+            <li>HTML</li>
+            <li>Excel</li>
+            <li>Canva</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects section: only real completed projects will be added here -->
+    <section class="projects" id="projects">
+      <div class="container">
+        <h2 class="section-heading">Projects</h2>
+        <p class="section-intro">I’m currently learning and building practical projects. Completed projects will be added here as I finish them.</p>
+        <div class="project-grid">
+          <article class="project-card">
+            <h3>Upcoming Projects</h3>
+            <p>Practical projects related to embedded systems, electronics, Arduino, HTML, Python, and Excel will be added as I complete them.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact section: replace the placeholder links with final contact details -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-heading">Contact</h2>
+        <p class="section-intro">I would be happy to connect and talk about learning, projects, and new opportunities.</p>
+        <div class="contact-box">
+         <p><strong>Email:</strong> shivamvk1845@gmail.com</p>
+
+<p>
+    <strong>LinkedIn:</strong>
+    <a href="https://www.linkedin.com/in/shivam-mishra-125b2b371" target="_blank">
+        linkedin.com/in/shivam-mishra-125b2b371
+    </a>
+</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer shown at the bottom of the page -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Shivam Mishra. Built with HTML and CSS.</p>
+    </div>
+  </footer>
+</body>
+</html>
